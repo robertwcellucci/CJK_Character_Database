@@ -39,9 +39,7 @@ Chinese, Japanese, and Korean each maintain their own official character standar
     ├── moe_4808_unicode.tsv
     ├── hsk_3.0_characters.csv
     ├── heisig-kanjis.csv
-    ├── kanjidic2.xml
-    └── kanji_freq_report.tsv
-```
+    ```
 
 ---
 
@@ -76,11 +74,7 @@ The spine of the entire schema. Every other table holds a foreign key back to `c
 | Table | Description |
 |---|---|
 | `character_source` | Records which educational list(s) each codepoint belongs to (`China`, `Japan`, `Korea`, `Taiwan`) |
-| `unihan_readings` | Mandarin, Cantonese, Korean, and Vietnamese readings from Unihan |
-| `unihan_dict_indices` | Entry numbers in classical dictionaries (KangXi, Morohashi, Nelson, etc.) |
-| `unihan_mappings` | Jōyō, Jinmeiyo, Korean MoE, and other list membership flags |
-| `unihan_dict_data` | Stroke counts, radical numbers, frequency data |
-| `unihan_variants` | Simplified ↔ Traditional and other variant codepoint mappings |
+| `dic_index_table` | Entry numbers in classical dictionaries (KangXi, Morohashi, Nelson, etc.) |
 | `trad_simp_map` | Explicit Traditional-to-Simplified mapping derived from HSK data (3,165 pairs) |
 
 ### ETL Pipeline (Creation Notebook)
@@ -195,9 +189,6 @@ Unicode merged visually similar CJK characters from Chinese, Japanese, and Korea
 
 **HSK is represented in traditional forms only.**  
 The `hsk_trad` source contains traditional written forms of HSK 3.0 vocabulary, not the simplified forms used in PRC classrooms. Cross-script comparisons for China reflect traditional character inventories, which are no longer the characters Mainland learners actually study.
-
-**Kokuji coverage in Unihan is not exhaustive.**  
-The kokuji identification in Section 1 uses Unihan's IRG source field as a proxy. Characters confirmed by this method are genuine kokuji; the true count may be slightly higher than what the query returns.
 
 ---
 
